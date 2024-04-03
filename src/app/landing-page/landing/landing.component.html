@@ -1,1 +1,137 @@
-<p>landing works!</p>
+<div class="v105_228">
+    <div class="v105_231">
+        <div class="v105_232"><span class="v105_233">Simplify Your API Development</span><span
+                class="v105_234">Design, test, and manage your APIs in one place. Streamline your development
+                process with our comprehensive workspace environment.</span>
+            <div class="v105_235">
+                <div class="v105_236"><span class="v105_237">Get Started</span></div>
+            </div>
+        </div>
+        <div class="v105_238"></div>
+    </div>
+    <div class="v105_239">
+        <div class="v105_240"><span class="v105_241">Features Overview</span>
+            <div class="v105_242">
+                <div class="v105_243">
+                    <div class="v105_244">
+                        <div class="v105_245">
+                            <div class="v105_246"></div>
+                        </div>
+                        <div class="v105_247"><span class="v105_248">Workspace Management</span><span
+                                class="v105_249">Effortlessly organize your API workspace for maximum
+                                efficiency</span></div>
+                    </div>
+                    <div class="v105_250">
+                        <div class="v105_251">
+                            <div class="v105_252"></div>
+                        </div>
+                        <div class="v105_253"><span class="v105_254">Schema Design</span><span
+                                class="v105_255">Create and modify API schema with ease</span></div>
+                    </div>
+                </div>
+                <div class="v105_256">
+                    <div class="v105_257">
+                        <div class="v105_258">
+                            <div class="v105_259"></div>
+                        </div>
+                        <div class="v105_260"><span class="v105_261">Test Data Generation</span><span
+                                class="v105_262">Generate test data quickly for comprehensive API testing</span>
+                        </div>
+                    </div>
+                    <div class="v105_263">
+                        <div class="v105_264">
+                            <div class="v105_265"></div>
+                        </div>
+                        <div class="v105_266"><span class="v105_267">Document Management</span><span
+                                class="v105_268">Manage API documentation seamlessly</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="v105_269"></div>
+    </div>
+    <div class="v105_270">
+        <div class="v105_271"><span class="v105_272">Quick Start Guide</span>
+            <div class="v105_273">
+                <div class="v105_274">
+                    <div class="v105_275"><span class="v105_276">🚀</span></div>
+                    <div class="v105_277"><span class="v105_278">Sign up for an account</span></div><span
+                        class="v105_279">Create a new account or log in to the platform</span>
+                </div>
+                <div class="v105_280">
+                    <div class="v105_281"><span class="v105_282">📝</span></div>
+                    <div class="v105_283"><span class="v105_284">Create your workspace</span></div><span
+                        class="v105_285">Set up your API workspace with custom settings</span>
+                </div>
+                <div class="v105_286">
+                    <div class="v105_287"><span class="v105_288">⚙️</span></div>
+                    <div class="v105_289"><span class="v105_290">Start designing APIs</span></div><span
+                        class="v105_291">Begin designing your API schema and test data generation</span>
+                </div>
+                <div class="v105_292">
+                    <div class="v105_293"><span class="v105_294">📄</span></div>
+                    <div class="v105_295"><span class="v105_296">Manage your documents</span></div><span
+                        class="v105_297">Organize and review API documentation</span>
+                </div>
+            </div>
+        </div>
+        <div class="v105_298"></div>
+    </div>
+    <div class="v105_299">
+        <div class="v105_300"><span class="v105_301">Testimonials</span></div>
+        <div class="v105_302">
+            <div class="v105_303">
+                <div class="v105_304">
+                    <div class="v105_305">
+                        <div class="v105_306"></div>
+                        <div class="v105_307"><span class="v105_308">Developer A</span></div>
+                    </div>
+                </div><span class="v105_309">This tool is a game-changer for API management! Highly
+                    recommended.</span>
+                <div class="v105_310"><span class="v105_311">👍</span><span class="v105_312">❤️</span></div>
+            </div>
+            <div class="v105_313">
+                <div class="v105_314">
+                    <div class="v105_315">
+                        <div class="v105_316"></div>
+                        <div class="v105_317"><span class="v105_318">Developer B</span></div>
+                    </div>
+                </div><span class="v105_319">Saves me so much time during development. Love the workspace
+                    features!</span>
+                <div class="v105_320"><span class="v105_321">👍</span><span class="v105_322">❤️</span></div>
+            </div>
+        </div>
+        <div class="v105_323"></div>
+    </div>
+    <div class="v105_324">
+        <mat-card>
+            <mat-card-title>Sign Up Now</mat-card-title>
+            <mat-card-content>
+                <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" [(ngModel)]="user.email" name="email" required email #email="ngModel">
+                        <mat-error *ngIf="email.invalid && email.touched">
+                            {{ getEmailErrorMessage(email) }}
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" [(ngModel)]="user.password" name="password" required minlength="6" #password="ngModel">
+                        <mat-error *ngIf="password.invalid && password.touched">
+                            {{ getPasswordErrorMessage(password) }}
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!signUpForm.valid">Register</button>
+                    <mat-error *ngIf="apiError">{{apiError}}</mat-error>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="v105_342">
+        <div class="v105_343"><span class="v105_344">© 2022 Mock API Tool. All Rights Reserved</span><span
+                class="v105_345">Privacy Policy</span><span class="v105_346">Terms of Use</span></div>
+    </div>
+</div>
