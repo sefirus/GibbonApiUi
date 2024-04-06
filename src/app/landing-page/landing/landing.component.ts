@@ -4,11 +4,12 @@ import { MatError, MatFormField, MatLabel, MatFormFieldModule } from '@angular/m
 import { MatInputModule } from '@angular/material/input';
 import { UserService } from '../../core/user.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [MatCard, MatCardTitle, MatCardContent, MatFormField, MatLabel, MatError, FormsModule,     MatFormFieldModule, MatInputModule],
+  imports: [MatCard, MatCardTitle, MatCardContent, MatFormField, MatLabel, MatError, FormsModule,     MatFormFieldModule, MatInputModule, CommonModule],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
