@@ -1,1 +1,17 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+  <span style="flex: 1;">MockApi</span>
+
+  <ng-container *ngIf="authService.isAuthorized(); else loggedOut">
+    <button mat-button routerLink="/workspaces">My Workspaces</button>
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-icon-button routerLink="/my-profile">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-button (click)="openDialog('Login')">Login</button>
+    <button mat-button (click)="openDialog('Register')">Register</button>
+  </ng-template>
+</mat-toolbar>

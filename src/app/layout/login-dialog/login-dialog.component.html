@@ -1,0 +1,15 @@
+<mat-card style="width: 100%; padding: var(--dl-space-space-unit)">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="email" type="email" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Password</mat-label>
+      <input matInput [(ngModel)]="password" type="password" required minlength="6">
+    </mat-form-field>
+    <button (click)="login()" color="black" mat-raised-button>Login</button>
+    <mat-error *ngIf="apiError">{{apiError}}</mat-error>
+  </mat-card-content>
+</mat-card>
