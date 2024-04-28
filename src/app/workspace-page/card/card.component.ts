@@ -1,16 +1,14 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {Workspace} from "../../core/models/Workspace";
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input()
-  text: string = 'Workspace Name 1'
-  @Input()
-  text1: string = 'Schema Objects: 3'
+  @Input() workspace: Workspace | null = null;
+
   constructor() {}
 }

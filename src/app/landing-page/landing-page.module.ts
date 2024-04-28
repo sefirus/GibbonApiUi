@@ -4,12 +4,12 @@ import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { CoreModule } from '../core/core.module';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule, LandingPageRoutingModule, MatCardModule, MatInputModule, CoreModule, HttpClientModule
+    CommonModule, LandingPageRoutingModule, MatCardModule, MatInputModule, CoreModule
     ]
 })
 export class LandingPageModule { }

@@ -15,11 +15,14 @@ export class AuthInterceptorService {
   private isRefreshing = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    console.log("init")
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<Object>> {
     let tokenizedReq = req;
     const accessToken = this.authService.getAccessToken();
+    console.log(accessToken);
     if (accessToken != null) {
       tokenizedReq = this.addTokenHeader(req, accessToken);
     }
