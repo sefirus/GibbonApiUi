@@ -1,16 +1,6 @@
 <div class="page1-container">
   <div class="page1-page">
-    <div class="page1-sidebar">
-      <div class="page1-frame427318907">
-        <span class="page1-text">
-          <span>User List</span>
-        </span>
-      </div>
-      <app-user-permissions-item *ngFor="let permission of workspace?.permissions" [permission]="permission"></app-user-permissions-item>
-      <div class="page1-item2">
-        <div class="page1-frame4273189082"><span class="page1-text14">+</span></div>
-      </div>
-    </div>
+    <app-user-pwemissions-management-panel [permissions]="workspace?.permissions" [workspaceName]="workspace?.name"></app-user-pwemissions-management-panel>
     <div class="page1-mainpage">
       <div class="page1-section">
         <div class="page1-container1"><span class="page1-text15"><span>Workspace: {{ workspace?.name }}</span></span></div>

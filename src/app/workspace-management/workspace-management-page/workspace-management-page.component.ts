@@ -6,12 +6,15 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {WorkspaceResponse} from "../../core/models/WorkspaceResponse";
 import {NgForOf} from "@angular/common";
+import {
+  UserPermissionsManagementPanelComponent
+} from "./user-pwemissions-management-panel/user-permissions-management-panel.component";
 
 
 @Component({
   selector: 'app-workspace-management-page',
   standalone: true,
-  imports: [RouterLink, UserPermissionsItemComponent, SchemaObjectCardComponent, NgForOf],
+  imports: [RouterLink, UserPermissionsItemComponent, SchemaObjectCardComponent, NgForOf, UserPermissionsManagementPanelComponent],
   templateUrl: './workspace-management-page.component.html',
   styleUrl: './workspace-management-page.component.css'
 })
