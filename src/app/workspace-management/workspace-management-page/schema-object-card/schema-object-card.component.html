@@ -1,0 +1,14 @@
+<div class="page1-card" *ngIf="schemaObject">
+  <div class="page1-imagecontainer">
+    <div class="page1-image">
+      <span class="page1-text19">{{ schemaObject.name }}</span>
+      <div class="page1-tag">
+        <span class="page1-text21">Documents: {{ schemaObject.numberOfDocuments }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="page1-textcontent">
+    <span class="page1-text25"> {{schemaObject.name}}</span>
+    <span class="page1-text23">Fields: {{ schemaObject.numberOfFields }}</span>
+  </div>
+</div>

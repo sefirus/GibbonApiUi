@@ -1,1 +1,32 @@
-<p>workspace-management-page works!</p>
+<div class="page1-container">
+  <div class="page1-page">
+    <div class="page1-sidebar">
+      <div class="page1-frame427318907">
+        <span class="page1-text">
+          <span>User List</span>
+        </span>
+      </div>
+      <app-user-permissions-item *ngFor="let permission of workspace?.permissions" [permission]="permission"></app-user-permissions-item>
+      <div class="page1-item2">
+        <div class="page1-frame4273189082"><span class="page1-text14">+</span></div>
+      </div>
+    </div>
+    <div class="page1-mainpage">
+      <div class="page1-section">
+        <div class="page1-container1"><span class="page1-text15"><span>Workspace: {{ workspace?.name }}</span></span></div>
+      </div>
+      <div class="page1-section1">
+        <div class="page1-container2"><span class="page1-text17"><span>Schema Objects</span></span></div>
+        <div class="page1-list">
+          <!-- Iterate over schemaObjects -->
+          <app-schema-object-card *ngFor="let schemaObject of workspace?.schemaObjects" [schemaObject]="schemaObject"></app-schema-object-card>
+          <div class="page1-card4">
+            <div class="page1-imagecontainer4">
+              <div class="page1-image4"><span class="page1-text51">+</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,8 @@
     align-items: center;
     flex-shrink: 0;
     justify-content: center;
-  }
+  background-color: rgba(0, 0, 0, 0.05000000074505806);
+}
 
   .page-container6 {
     gap: 60px;
@@ -62,4 +63,3 @@
     font-stretch: normal;
     text-decoration: none;
   }
-  
