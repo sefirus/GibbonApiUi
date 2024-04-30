@@ -5,6 +5,9 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {NgForOf} from "@angular/common";
 import {AuthService} from "../../core/services/auth.service";
+import {MatDialog} from "@angular/material/dialog";
+import {LoginDialogComponent} from "../../layout/login-dialog/login-dialog.component";
+import {CreateWorkspaceDialogComponent} from "../create-workspace-dialog/create-workspace-dialog.component";
 
 @Component({
   selector: 'app-user-workspaces',
@@ -19,7 +22,7 @@ import {AuthService} from "../../core/services/auth.service";
 export class UserWorkspacesComponent {
   workspaces: Workspace[] = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.fetchWorkspaces();
@@ -44,6 +47,6 @@ export class UserWorkspacesComponent {
   }
 
   addNewWorkspace() {
-    console.log(this.authService.getAccessToken())
+    this.dialog.open(CreateWorkspaceDialogComponent, {});
   }
 }
