@@ -7,8 +7,23 @@
       </div>
     </div>
   </div>
+  <div class="kebab-menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="deleteItem()">
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+      <button mat-menu-item (click)="viewContent()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>View Content</span>
+      </button>
+    </mat-menu>
+  </div>
   <div class="page1-textcontent">
-    <span class="page1-text25"> {{schemaObject.name}}</span>
+    <span class="page1-text25">{{schemaObject.name}}</span>
     <span class="page1-text23">Fields: {{ schemaObject.numberOfFields }}</span>
   </div>
 </div>

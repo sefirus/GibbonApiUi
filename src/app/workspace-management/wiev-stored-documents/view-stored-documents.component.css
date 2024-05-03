@@ -1,0 +1,17 @@
+textarea {
+  width: 99%;
+  height: 95%; /* Adjust height as needed */
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  overflow-y: auto; /* Removes horizontal scroll, allows vertical */
+}
+
+mat-dialog-actions {
+  display: flex;
+  height: 10%;
+  justify-content: flex-end;
+}
+
+mat-dialog-content {
+}

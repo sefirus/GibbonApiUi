@@ -1,15 +1,15 @@
-.page1-card {
-  width: 317px;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  flex-shrink: 0;
-  border-color: rgba(0, 0, 0, 0.10000000149011612);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 6px;
-  flex-direction: column;
-}
+/*.page1-card {*/
+/*  width: 317px;*/
+/*  display: flex;*/
+/*  overflow: hidden;*/
+/*  align-items: center;*/
+/*  flex-shrink: 0;*/
+/*  border-color: rgba(0, 0, 0, 0.10000000149011612);*/
+/*  border-style: solid;*/
+/*  border-width: 1px;*/
+/*  border-radius: 6px;*/
+/*  flex-direction: column;*/
+/*}*/
 .page1-imagecontainer {
   display: flex;
   overflow: hidden;
@@ -101,4 +101,23 @@
   line-height: 28px;
   font-stretch: normal;
   text-decoration: none;
+}
+.page1-card {
+  position: relative;
+  width: 317px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(0, 0, 0, 0.10000000149011612);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  flex-direction: column;
+}
+
+.kebab-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
