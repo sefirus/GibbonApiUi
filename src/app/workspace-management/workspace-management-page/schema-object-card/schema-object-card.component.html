@@ -1,4 +1,4 @@
-<div class="page1-card" *ngIf="schemaObject">
+<div class="page1-card" *ngIf="schemaObject" (click)="openSchemaEditDialog()">
   <div class="page1-imagecontainer">
     <div class="page1-image">
       <span class="page1-text19">{{ schemaObject.name }}</span>

@@ -1,0 +1,43 @@
+.u-shape {
+  display: flex;
+  flex-direction: column; /* Align children vertically */
+  height: 100%; /* Fill the height of the container */
+  width: 100%; /* Fill the width of the container */
+}
+
+.content-wrapper {
+  display: flex; /* Horizontal layout for content and the vertical bar */
+  flex-grow: 1; /* Allow content area to take available space */
+}
+
+.horizontal {
+  height: 20px; /* Thickness of the U shape */
+  width: 100%;
+}
+
+.vertical {
+  width: 20px; /* Thickness of the U shape */
+  flex-grow: 1; /* Allow vertical bar to take available vertical space */
+  position: relative;
+  z-index: 1; /* Ensures overlap over horizontal bars */
+}
+
+.top {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  border-bottom: 0; /* Remove bottom border to allow seamless connection */
+}
+
+.bottom {
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  border-top: 0; /* Remove top border to allow seamless connection */
+}
+
+.content-area {
+  flex-grow: 1;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  padding: 10px; /* Padding around the content */
+}

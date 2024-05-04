@@ -1,0 +1,28 @@
+
+<ng-container *ngIf="schemaField!.type !== 'Array' && schemaField!.type !== 'Object'">
+  <div class="schema-field" [ngStyle]="{'background-color': getColor(schemaField!.type)}">
+    <span class="schema-field-text">{{ schemaField!.fieldName != null ? schemaField!.fieldName : schemaField!.type + " array field" }}</span>
+    <div>
+      <mat-icon>more_vert</mat-icon>
+    </div>
+  </div>
+</ng-container>
+
+
+<!-- Render Array type with app-u-shape -->
+  <ng-container *ngIf="schemaField!.type === 'Array'">
+    <app-render-parent-field-node [color]="getColor(schemaField!.type)">
+      <app-schema-field-node [schemaField]="schemaField!.arrayElement"></app-schema-field-node>
+    </app-render-parent-field-node>
+  </ng-container>
+
+  <!-- Render Object type with app-u-shape -->
+  <ng-container *ngIf="schemaField!.type === 'Object'">
+    <app-render-parent-field-node [color]="getColor(schemaField!.type)">
+      <div class="page2-objectcontent">
+        <ng-container *ngFor="let key of objectKeys(schemaField!.fields)">
+          <app-schema-field-node [schemaField]="schemaField!.fields[key]"></app-schema-field-node>
+        </ng-container>
+      </div>
+    </app-render-parent-field-node>
+  </ng-container>

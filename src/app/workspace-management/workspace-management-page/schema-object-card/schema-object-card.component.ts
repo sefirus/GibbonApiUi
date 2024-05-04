@@ -8,6 +8,7 @@ import {HttpClient} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {environment} from "../../../../environments/environment";
 import {ViewStoredDocumentsComponent} from "../../wiev-stored-documents/view-stored-documents.component";
+import {CreateEditSchemaDialogComponent} from "../../create-edit-schema-dialog/create-edit-schema-dialog.component";
 
 @Component({
   selector: 'app-schema-object-card',
@@ -45,6 +46,14 @@ export class SchemaObjectCardComponent {
         height: '70%',
         data: { content: JSON.stringify(data, null, 2) }
       });
+    });
+  }
+
+  openSchemaEditDialog() {
+    this.dialog.open(CreateEditSchemaDialogComponent, {
+      width: '80%',
+      height: '70%',
+      data: this.schemaObject
     });
   }
 }
