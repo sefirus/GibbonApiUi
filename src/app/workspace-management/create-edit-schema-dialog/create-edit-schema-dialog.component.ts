@@ -5,6 +5,9 @@ import {MatIcon} from "@angular/material/icon";
 import {SchemaFieldNodeComponent} from "./schema-field-node/schema-field-node.component";
 import {SchemaObject} from "../../core/models/SchemaObject";
 import {NgForOf} from "@angular/common";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-create-edit-schema-dialog',
@@ -13,7 +16,11 @@ import {NgForOf} from "@angular/common";
     RenderParentFieldNodeComponent,
     MatIcon,
     SchemaFieldNodeComponent,
-    NgForOf
+    NgForOf,
+    MatFormField,
+    MatInput,
+    MatButton,
+    MatLabel
   ],
   templateUrl: './create-edit-schema-dialog.component.html',
   styleUrl: './create-edit-schema-dialog.component.css'

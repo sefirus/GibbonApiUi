@@ -1,14 +1,14 @@
 <div class="page2-container">
   <div class="page2-page">
-    <div class="page2-frame427318909">
-      <span class="page2-text"><span>Add/Edit Schema Object</span></span>
-      <div class="page2-input">
-        <span class="page2-text02"><span>Enter schema object name</span></span>
-        <div class="page2-textfield"><span class="page2-text04"><span>Enter schema object name</span></span></div>
-      </div>
-    </div>
     <div class="page2-section">
-      <div class="page2-workplece">
+      <span class="page2-text"><span>Add Schema Object</span></span>
+      <mat-form-field appearance="outline">
+        <mat-label>Object Name</mat-label>
+        <input matInput placeholder="Enter name">
+      </mat-form-field>
+    </div>
+
+      <div class="page2-workplace">
         <div class="page2-available-data-types">
           <span class="page2-text06"><span>Select Data Type</span></span>
           <div class="page2-image"><span class="page2-text08"><span>Number</span></span></div>
@@ -19,26 +19,20 @@
             <div class="page2-frame427318910"><span class="page2-text16"><span>Array</span></span></div>
           </div>
         </div>
+
         <div class="page2-objectconstructor">
-          <div class="page2-object">
-            <app-render-parent-field-node [color]="'rgba(123, 159, 176, 1)'">
-              <div class="page2-objectcontent">
-                  <div *ngFor="let key of objectKeys(data.fields)">
-                    <app-schema-field-node [schemaField]="data.fields[key]"> </app-schema-field-node>
-                  </div>
+          <app-render-parent-field-node [color]="'rgba(123, 159, 176, 1)'">
+            <div class="page2-objectcontent">
+              <div *ngFor="let key of objectKeys(data.fields)">
+                <app-schema-field-node [schemaField]="data.fields[key]"></app-schema-field-node>
               </div>
-            </app-render-parent-field-node>
-          </div>
+            </div>
+          </app-render-parent-field-node>
         </div>
       </div>
-    </div>
-    <div class="page2-frame427318913">
-      <button class="page2-button">
-        <div class="page2-primary"><span class="page2-text32"><span>Save</span></span></div>
-      </button>
-      <button class="page2-button1">
-        <div class="page2-primary1"><span the="page2-text34"><span>Save</span></span></div>
-      </button>
+    <div class="page2-buttons">
+      <button mat-button color="white">Cancel</button>
+      <button mat-raised-button color="black">Save</button>
     </div>
   </div>
 </div>

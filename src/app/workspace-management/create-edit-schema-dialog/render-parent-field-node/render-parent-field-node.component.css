@@ -7,7 +7,6 @@
 
 .content-wrapper {
   display: flex; /* Horizontal layout for content and the vertical bar */
-  flex-grow: 1; /* Allow content area to take available space */
 }
 
 .horizontal {
@@ -17,10 +16,10 @@
 
 .vertical {
   width: 20px; /* Thickness of the U shape */
-  flex-grow: 1; /* Allow vertical bar to take available vertical space */
   position: relative;
   z-index: 1; /* Ensures overlap over horizontal bars */
 }
+
 
 .top {
   border-top-left-radius: 9px;
@@ -37,7 +36,6 @@
 .content-area {
   flex-grow: 1;
   display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
+  justify-content: left; /* Center content horizontally */
   padding: 10px; /* Padding around the content */
 }

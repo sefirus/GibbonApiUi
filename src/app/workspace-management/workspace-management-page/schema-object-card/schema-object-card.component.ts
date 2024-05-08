@@ -51,8 +51,6 @@ export class SchemaObjectCardComponent {
 
   openSchemaEditDialog() {
     this.dialog.open(CreateEditSchemaDialogComponent, {
-      width: '80%',
-      height: '70%',
       data: this.schemaObject
     });
   }
