@@ -10,7 +10,7 @@
         <div class="page1-list">
           <!-- Iterate over schemaObjects -->
           <app-schema-object-card *ngFor="let schemaObject of workspace?.schemaObjects" [schemaObject]="schemaObject" [workspaceName]="workspace?.name!"></app-schema-object-card>
-          <div class="page1-card4">
+          <div class="page1-card4" (click)="createNewObject()">
             <div class="page1-imagecontainer4">
               <div class="page1-image4"><span class="page1-text51">+</span></div>
             </div>

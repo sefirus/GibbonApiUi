@@ -1,0 +1,15 @@
+<div class="icon-button-container">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Add new field">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <div mat-menu-item>
+      <h4>Add a new field</h4>
+    </div>
+    <button mat-menu-item (click)="addField('Number')">Number</button>
+    <button mat-menu-item (click)="addField('String')">String</button>
+    <button mat-menu-item (click)="addField('Boolean')">Boolean</button>
+    <button mat-menu-item (click)="addField('Object')">Object</button>
+    <button mat-menu-item (click)="addField('Array')">Array</button>
+  </mat-menu>
+</div>

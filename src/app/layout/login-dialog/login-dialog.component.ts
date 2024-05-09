@@ -32,13 +32,11 @@ export class LoginDialogComponent {
   login(): void {
     this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
-        console.log('Login successful', response);
         this.dialogRef.close(); // Close the dialog
         this.router.navigate(['/workspaces']);
 
       },
       error: (error) => {
-        console.error('Login failed', error);
         this.apiError = error["error_description"] == "invalid_username_or_password" ? "Invalid username or password" : 'Login failed';
       }
     });

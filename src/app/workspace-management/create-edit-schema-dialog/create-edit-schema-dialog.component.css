@@ -90,18 +90,7 @@
   justify-content: center;
   background-color: rgba(150, 93, 174, 1);
 }
-.page2-text10 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 16px;
-  font-style: Medium;
-  text-align: center;
-  font-family: Roboto;
-  font-weight: 500;
-  line-height: 16px;
-  font-stretch: normal;
-  text-decoration: none;
-}
+
 .page2-image2 {
   display: flex;
   padding: 10px;
@@ -113,18 +102,7 @@
   justify-content: center;
   background-color: rgba(115, 177, 171, 1);
 }
-.page2-text12 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 16px;
-  font-style: Medium;
-  text-align: center;
-  font-family: Roboto;
-  font-weight: 500;
-  line-height: 16px;
-  font-stretch: normal;
-  text-decoration: none;
-}
+
 .page2-image3 {
   display: flex;
   padding: 10px;
@@ -136,18 +114,7 @@
   justify-content: center;
   background-color: rgba(123, 159, 176, 1);
 }
-.page2-text14 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 16px;
-  font-style: Medium;
-  text-align: center;
-  font-family: Roboto;
-  font-weight: 500;
-  line-height: 16px;
-  font-stretch: normal;
-  text-decoration: none;
-}
+
 .page2-image4 {
   display: flex;
   padding: 10px;
@@ -165,18 +132,7 @@
   align-items: flex-start;
   justify-content: center;
 }
-.page2-text16 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 16px;
-  font-style: Medium;
-  text-align: center;
-  font-family: Roboto;
-  font-weight: 500;
-  line-height: 16px;
-  font-stretch: normal;
-  text-decoration: none;
-}
+
 .page2-objectconstructor {
   gap: 10px;
   display: flex;

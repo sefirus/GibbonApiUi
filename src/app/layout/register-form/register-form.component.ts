@@ -39,14 +39,12 @@ export class RegisterFormComponent {
     if (signUpForm.valid) {
       this.userService.registerUser(this.user).subscribe({
         next: (response) => {
-          console.log('Registration successful', response);
           this.apiError = null;
           signUpForm.reset();
 
           this.router.navigate(['/workspaces']);
         },
         error: (error) => {
-          console.error('Registration failed', error);
           this.apiError = error.error.message || 'Registration failed';
         }
       });

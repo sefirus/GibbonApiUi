@@ -77,7 +77,6 @@ export class UserPermissionsManagementPanelComponent {
           this.showAddPermissionPanel = false;  // Hide the panel on successful permission reload
         },
         error: (err) => {
-          console.error('Failed to load permissions:', err);
           alert('Failed to load permissions: ' + err.message);
         }
       });

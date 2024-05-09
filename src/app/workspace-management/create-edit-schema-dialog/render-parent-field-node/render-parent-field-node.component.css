@@ -24,12 +24,14 @@
 .top {
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
   border-bottom: 0; /* Remove bottom border to allow seamless connection */
 }
 
 .bottom {
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
+  border-top-right-radius: 9px;
   border-top: 0; /* Remove top border to allow seamless connection */
 }
 

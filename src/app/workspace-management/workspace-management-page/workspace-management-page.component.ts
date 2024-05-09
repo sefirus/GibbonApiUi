@@ -9,6 +9,9 @@ import {NgForOf} from "@angular/common";
 import {
   UserPermissionsManagementPanelComponent
 } from "./user-pwemissions-management-panel/user-permissions-management-panel.component";
+import {MatDialog} from "@angular/material/dialog";
+import {CreateEditSchemaDialogComponent} from "../create-edit-schema-dialog/create-edit-schema-dialog.component";
+import {SchemaObject} from "../../core/models/SchemaObject";
 
 
 @Component({
@@ -21,7 +24,7 @@ import {
 export class WorkspaceManagementPageComponent  implements OnInit {
   workspace: WorkspaceResponse | undefined;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -29,6 +32,15 @@ export class WorkspaceManagementPageComponent  implements OnInit {
       this.http.get<WorkspaceResponse>(`${environment.apiBaseUrl}/workspaces/${workspaceName}`).subscribe(data => {
         this.workspace = data;
       });
+    });
+  }
+
+  createNewObject() {
+    this.dialog.open(CreateEditSchemaDialogComponent, {
+      data: {
+        isCreate: true,
+        schemaObject: new SchemaObject({})
+      }
     });
   }
 }

@@ -1,31 +1,37 @@
 <div class="page2-container">
   <div class="page2-page">
-    <div class="page2-section">
+    <div class="page2-section" *ngIf="isCreate">
       <span class="page2-text"><span>Add Schema Object</span></span>
       <mat-form-field appearance="outline">
         <mat-label>Object Name</mat-label>
         <input matInput placeholder="Enter name">
       </mat-form-field>
     </div>
+    <div class="page2-section" *ngIf="!isCreate">
+      <span class="page2-text"><span>{{schemaObject?.name}}</span></span>
+    </div>
 
       <div class="page2-workplace">
         <div class="page2-available-data-types">
           <span class="page2-text06"><span>Select Data Type</span></span>
           <div class="page2-image"><span class="page2-text08"><span>Number</span></span></div>
-          <div class="page2-image1"><span class="page2-text10"><span>String</span></span></div>
-          <div class="page2-image2"><span class="page2-text12"><span>Boolean</span></span></div>
-          <div class="page2-image3"><span class="page2-text14"><span>Object</span></span></div>
+          <div class="page2-image1"><span class="page2-text08"><span>String</span></span></div>
+          <div class="page2-image2"><span class="page2-text08"><span>Boolean</span></span></div>
+          <div class="page2-image3"><span class="page2-text08"><span>Object</span></span></div>
           <div class="page2-image4">
-            <div class="page2-frame427318910"><span class="page2-text16"><span>Array</span></span></div>
+            <div class="page2-frame427318910"><span class="page2-text08"><span>Array</span></span></div>
           </div>
         </div>
 
         <div class="page2-objectconstructor">
           <app-render-parent-field-node [color]="'rgba(123, 159, 176, 1)'">
-            <div class="page2-objectcontent">
-              <div *ngFor="let key of objectKeys(data.fields)">
-                <app-schema-field-node [schemaField]="data.fields[key]"></app-schema-field-node>
+            <div *ngIf="objectKeys(schemaObject?.fields ?? [])!.length > 0" class="page2-objectcontent">
+              <div *ngFor="let key of objectKeys(schemaObject?.fields ?? [])">
+                <app-schema-field-node [schemaField]="schemaObject.fields[key]"></app-schema-field-node>
               </div>
+            </div>
+            <div *ngIf="objectKeys(schemaObject?.fields ?? [])?.length == 0" class="page2-objectcontent">
+              <app-add-new-field-icon [schemaFields]="schemaObject"></app-add-new-field-icon>
             </div>
           </app-render-parent-field-node>
         </div>

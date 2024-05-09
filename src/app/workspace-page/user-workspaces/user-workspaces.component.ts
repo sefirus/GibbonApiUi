@@ -41,7 +41,6 @@ export class UserWorkspacesComponent {
           ));
         },
         error: (error) => {
-          console.error('Error fetching workspaces:', error);
         }
       });
   }

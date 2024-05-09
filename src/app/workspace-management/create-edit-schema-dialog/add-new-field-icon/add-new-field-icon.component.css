@@ -1,0 +1,11 @@
+.icon-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 160px;
+}
+
+mat-menu {
+  max-height: 200px; /* Reduce height or adjust as needed */
+}

@@ -33,8 +33,6 @@ export class SchemaObjectCardComponent {
   deleteItem() {
     const url = `${environment.apiBaseUrl}/schema/${this.workspaceName}/${this.schemaObject!.name}`;
     this.http.delete(url).subscribe({
-      next: (response) => console.log('Delete successful'),
-      error: (error) => console.error('Error deleting', error)
     });
   }
 
@@ -51,7 +49,10 @@ export class SchemaObjectCardComponent {
 
   openSchemaEditDialog() {
     this.dialog.open(CreateEditSchemaDialogComponent, {
-      data: this.schemaObject
+      data: {
+        isCreate: false,
+        schemaObject: this.schemaObject
+      }
     });
   }
 }

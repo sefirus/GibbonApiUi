@@ -45,7 +45,6 @@ export class AuthService {
         this.login$.next(tokenResponse); // Ensure this Observable is declared
       }),
       catchError((error) => {
-        console.error('Error in login:', error);
         return throwError(error); // Re-throw the error so that the subscribe's error handler can catch it
       })
     );

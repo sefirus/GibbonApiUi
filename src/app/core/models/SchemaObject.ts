@@ -13,7 +13,7 @@ export class SchemaObject {
     this.workspaceId = data.workspaceId;
     this.name = data.name;
     this.fields = {};
-    Object.keys(data.fields).forEach(key => {
+    Object.keys(data.fields ?? []).forEach(key => {
       this.fields[key] = new SchemaField(data.fields[key]);
     });
     this.numberOfDocuments = data.numberOfDocuments;
