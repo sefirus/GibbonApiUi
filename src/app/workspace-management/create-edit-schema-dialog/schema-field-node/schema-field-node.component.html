@@ -2,29 +2,57 @@
   <div class="schema-field" [ngStyle]="{'background-color': getColor(schemaField!.type)}">
     <input *ngIf="isCreate" [(ngModel)]="schemaField!.fieldName" (ngModelChange)="updateFieldName($event)" class="name-input">
     <span *ngIf="!isCreate">{{ schemaField!.fieldName != null ? schemaField!.fieldName : schemaField!.type + " field" }}</span>
-    <div>
-      <mat-icon>more_vert</mat-icon>
+    <div *ngIf="isCreate">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onDeleteField()">
+          Delete
+        </button>
+        <button mat-menu-item disabled>
+          Mark As PK
+        </button>
+      </mat-menu>
     </div>
   </div>
 </ng-container>
 
-<!-- Render Array type with app-render-parent-field-node -->
+<!-- Render Array type with app-parent-schema-field-node -->
 <ng-container *ngIf="schemaField!.type === 'Array'">
-  <app-render-parent-field-node [name]="schemaField!.fieldName" [isCreate]="isCreate" (nameChange)="schemaField!.fieldName = $event" [color]="getColor(schemaField!.type)">
-    <app-schema-field-node [isCreate]="isCreate" [schemaField]="schemaField!.arrayElement"></app-schema-field-node>
-  </app-render-parent-field-node>
+  <app-parent-schema-field-node
+    [schemaField]="schemaField"
+    [isCreate]="isCreate"
+    (nameChange)="schemaField!.fieldName = $event"
+    (deleteField)="onDeleteField()">
+    <app-schema-field-node
+      *ngIf="schemaField!.arrayElement?.type != null"
+      [isCreate]="isCreate"
+      [schemaField]="schemaField!.arrayElement"
+      (deleteField)="handleDeleteArrayElement()"></app-schema-field-node>
+    <div *ngIf="isCreate && schemaField!.arrayElement?.type == null" class="page2-objectcontent">
+      <app-add-new-field-icon  [schemaFields]="schemaField!.fields" (onFieldAdded)="handleArrayElementAdded($event)"></app-add-new-field-icon>
+    </div>
+  </app-parent-schema-field-node>
 </ng-container>
 
-<!-- Render Object type with app-render-parent-field-node -->
+<!-- Render Object type with app-parent-schema-field-node -->
 <ng-container *ngIf="schemaField!.type === 'Object'">
-  <app-render-parent-field-node [name]="schemaField!.fieldName" [isCreate]="isCreate" (nameChange)="schemaField!.fieldName = $event" [color]="getColor(schemaField!.type)">
+  <app-parent-schema-field-node
+    [schemaField]="schemaField"
+    [isCreate]="isCreate"
+    (nameChange)="schemaField!.fieldName = $event"
+    (deleteField)="onDeleteField()">
     <div class="page2-objectcontent">
       <ng-container *ngFor="let key of objectKeys(schemaField!.fields)">
-        <app-schema-field-node [schemaField]="schemaField!.fields[key]" [isCreate]="isCreate"></app-schema-field-node>
+        <app-schema-field-node
+          [schemaField]="schemaField!.fields[key]"
+          [isCreate]="isCreate"
+          (deleteField)="handleDeleteField(key)"></app-schema-field-node>
       </ng-container>
       <div *ngIf="isCreate" class="page2-objectcontent">
-        <app-add-new-field-icon  [schemaFields]="schemaField!.fields" (onFieldAdded)="handleFieldAdded($event)"></app-add-new-field-icon>
+        <app-add-new-field-icon [schemaFields]="schemaField!.fields" (onFieldAdded)="handleFieldAdded($event)"></app-add-new-field-icon>
       </div>
     </div>
-  </app-render-parent-field-node>
+  </app-parent-schema-field-node>
 </ng-container>

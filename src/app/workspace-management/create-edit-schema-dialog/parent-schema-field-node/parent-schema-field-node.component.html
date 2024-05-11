@@ -1,0 +1,30 @@
+<div class="u-shape">
+  <div class="horizontal top" [style.background-color]="getColor()">
+    <input *ngIf="isCreate"
+           [(ngModel)]="fieldName"
+           (ngModelChange)="nameChange.emit(schemaField?.fieldName)"
+           class="name-input"
+           placeholder="Enter name">
+    <span  class="name-input" *ngIf="!isCreate">{{ schemaField?.fieldName }}</span>
+    <div *ngIf="isCreate">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onDeleteField()">
+          Delete
+        </button>
+        <button mat-menu-item disabled>
+          Mark As PK
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="vertical" [style.background-color]="getColor()"></div>
+    <div class="content-area">
+      <ng-content></ng-content> <!-- Place for dynamic content -->
+    </div>
+  </div>
+  <div class="horizontal bottom" [style.background-color]="getColor()"></div>
+</div>

@@ -2,9 +2,11 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {SchemaField} from "../../../core/models/SchemaField";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
-import {RenderParentFieldNodeComponent} from "../render-parent-field-node/render-parent-field-node.component";
+import {ParentSchemaFieldNodeComponent} from "../parent-schema-field-node/parent-schema-field-node.component";
 import {FormsModule} from "@angular/forms";
 import {AddNewFieldIconComponent} from "../add-new-field-icon/add-new-field-icon.component";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatIconButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-schema-field-node',
@@ -14,9 +16,13 @@ import {AddNewFieldIconComponent} from "../add-new-field-icon/add-new-field-icon
     NgStyle,
     NgForOf,
     NgIf,
-    RenderParentFieldNodeComponent,
+    ParentSchemaFieldNodeComponent,
     FormsModule,
-    AddNewFieldIconComponent
+    AddNewFieldIconComponent,
+    MatMenu,
+    MatMenuTrigger,
+    MatIconButton,
+    MatMenuItem
   ],
   templateUrl: './schema-field-node.component.html',
   styleUrl: './schema-field-node.component.css'
@@ -25,6 +31,7 @@ export class SchemaFieldNodeComponent {
   @Input() schemaField: SchemaField | undefined;  // The SchemaField object
   @Input() isCreate: boolean = false;
   @Output() nameChange = new EventEmitter<string>();
+  @Output() deleteField = new EventEmitter<string>();
 
   getColor(type: string): string {
     switch (type) {
@@ -51,11 +58,31 @@ export class SchemaFieldNodeComponent {
     if (this.schemaField && oldName !== newName) {
       this.schemaField.fieldName = newName;
       this.nameChange.emit(newName);
-      //this.keyChange.emit({ oldKey: oldName, newKey: newName });
     }
   }
 
   handleFieldAdded(event: { key: string, field: SchemaField }): void {
     this.schemaField!.fields[event.key] = event.field;
+  }
+  handleArrayElementAdded(event: { key: string, field: SchemaField }): void {
+    this.schemaField!.arrayElement = event.field;
+  }
+
+  onDeleteField(): void {
+    if (this.schemaField) {
+      this.deleteField.emit(this.schemaField.fieldName);
+    }
+  }
+
+  handleDeleteField(key: string): void {
+    if (key in this.schemaField!.fields) {
+      delete this.schemaField!.fields[key];
+    }
+  }
+  handleDeleteArrayElement(): void {
+    if (this.schemaField?.type != 'Array'){
+      return;
+    }
+    this.schemaField.arrayElement = undefined;
   }
 }

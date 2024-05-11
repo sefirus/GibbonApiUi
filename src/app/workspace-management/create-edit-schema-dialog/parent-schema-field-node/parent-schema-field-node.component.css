@@ -27,6 +27,11 @@
   border-bottom-right-radius: 9px;
   border-bottom: 0; /* Remove bottom border to allow seamless connection */
   padding: 3px 5px;
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
 }
 
 .bottom {

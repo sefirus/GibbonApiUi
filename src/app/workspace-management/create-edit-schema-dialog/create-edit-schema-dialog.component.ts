@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {RenderParentFieldNodeComponent} from "./render-parent-field-node/render-parent-field-node.component";
+import {ParentSchemaFieldNodeComponent} from "./parent-schema-field-node/parent-schema-field-node.component";
 import {MatIcon} from "@angular/material/icon";
 import {SchemaFieldNodeComponent} from "./schema-field-node/schema-field-node.component";
 import {SchemaObject} from "../../core/models/SchemaObject";
@@ -15,7 +15,7 @@ import {SchemaField} from "../../core/models/SchemaField";
   selector: 'app-create-edit-schema-dialog',
   standalone: true,
   imports: [
-    RenderParentFieldNodeComponent,
+    ParentSchemaFieldNodeComponent,
     MatIcon,
     SchemaFieldNodeComponent,
     NgForOf,
@@ -55,11 +55,9 @@ export class CreateEditSchemaDialogComponent {
     this.schemaObject.numberOfFields++;
   }
 
-  handleKeyChange(oldKey: string, event: { oldKey: string, newKey: string }): void {
-    if (oldKey !== event.newKey) {
-      const field = this.schemaObject.fields[oldKey];
-      delete this.schemaObject.fields[oldKey];
-      this.schemaObject.fields[event.newKey] = field;
+  handleDeleteField(key: string): void {
+    if (key in this.schemaObject.fields) {
+      delete this.schemaObject.fields[key];
     }
   }
 }
