@@ -6,13 +6,12 @@
   flex-shrink: 0;
   border-radius: 9px;
   justify-content: space-between;
-  background-color: rgba(205, 91, 136, 1);
 }
 .schema-field-text {
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 16px;
-  font-style: Medium;
+  /*font-style: Medium;*/
   text-align: center;
   font-family: Roboto;
   font-weight: 500;
@@ -29,4 +28,18 @@
   align-items: flex-start;
   flex-shrink: 0;
   flex-direction: column;
+}
+.name-input {
+  background: transparent;
+  border: none;
+  width: 100%;
+  color: inherit;
+  height: auto;
+  font-size: 16px;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 500;
+  line-height: 16px;
+  font-stretch: normal;
+  text-decoration: none;
 }

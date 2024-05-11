@@ -9,6 +9,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {AddNewFieldIconComponent} from "./add-new-field-icon/add-new-field-icon.component";
+import {SchemaField} from "../../core/models/SchemaField";
 
 @Component({
   selector: 'app-create-edit-schema-dialog',
@@ -46,10 +47,19 @@ export class CreateEditSchemaDialogComponent {
   }
 
   objectKeys(obj: any): string[] | null {
-    // if(this.isCreate && this.schemaObject?.fields != null && Object.keys(this.schemaObject.fields).length > 0) {
-    //   console.log(this.schemaObject)
-    //   return [];
-    // }
     return Object.keys(obj) ?? [];
+  }
+
+  handleFieldAdded(event: { key: string, field: SchemaField }): void {
+    this.schemaObject.fields[event.key] = event.field;
+    this.schemaObject.numberOfFields++;
+  }
+
+  handleKeyChange(oldKey: string, event: { oldKey: string, newKey: string }): void {
+    if (oldKey !== event.newKey) {
+      const field = this.schemaObject.fields[oldKey];
+      delete this.schemaObject.fields[oldKey];
+      this.schemaObject.fields[event.newKey] = field;
+    }
   }
 }

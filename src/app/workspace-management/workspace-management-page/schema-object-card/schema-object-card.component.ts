@@ -7,7 +7,7 @@ import {MatIconButton} from "@angular/material/button";
 import {HttpClient} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {environment} from "../../../../environments/environment";
-import {ViewStoredDocumentsComponent} from "../../wiev-stored-documents/view-stored-documents.component";
+import {ViewStoredDocumentsComponent} from "../../view-stored-documents/view-stored-documents.component";
 import {CreateEditSchemaDialogComponent} from "../../create-edit-schema-dialog/create-edit-schema-dialog.component";
 
 @Component({

@@ -1,8 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {SchemaField} from "../../../core/models/SchemaField";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {RenderParentFieldNodeComponent} from "../render-parent-field-node/render-parent-field-node.component";
+import {FormsModule} from "@angular/forms";
+import {AddNewFieldIconComponent} from "../add-new-field-icon/add-new-field-icon.component";
 
 @Component({
   selector: 'app-schema-field-node',
@@ -12,13 +14,17 @@ import {RenderParentFieldNodeComponent} from "../render-parent-field-node/render
     NgStyle,
     NgForOf,
     NgIf,
-    RenderParentFieldNodeComponent
+    RenderParentFieldNodeComponent,
+    FormsModule,
+    AddNewFieldIconComponent
   ],
   templateUrl: './schema-field-node.component.html',
   styleUrl: './schema-field-node.component.css'
 })
 export class SchemaFieldNodeComponent {
   @Input() schemaField: SchemaField | undefined;  // The SchemaField object
+  @Input() isCreate: boolean = false;
+  @Output() nameChange = new EventEmitter<string>();
 
   getColor(type: string): string {
     switch (type) {
@@ -40,6 +46,16 @@ export class SchemaFieldNodeComponent {
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
   }
-  constructor() {
+  updateFieldName(newName: string): void {
+    const oldName = this.schemaField!.fieldName;
+    if (this.schemaField && oldName !== newName) {
+      this.schemaField.fieldName = newName;
+      this.nameChange.emit(newName);
+      //this.keyChange.emit({ oldKey: oldName, newKey: newName });
+    }
+  }
+
+  handleFieldAdded(event: { key: string, field: SchemaField }): void {
+    this.schemaField!.fields[event.key] = event.field;
   }
 }

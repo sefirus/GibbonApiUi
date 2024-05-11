@@ -25,16 +25,17 @@
 
         <div class="page2-objectconstructor">
           <app-render-parent-field-node [color]="'rgba(123, 159, 176, 1)'">
-            <div *ngIf="objectKeys(schemaObject?.fields ?? [])!.length > 0" class="page2-objectcontent">
-              <div *ngFor="let key of objectKeys(schemaObject?.fields ?? [])">
-                <app-schema-field-node [schemaField]="schemaObject.fields[key]"></app-schema-field-node>
+            <div class="page2-objectcontent">
+              <div *ngFor="let key of objectKeys(schemaObject.fields)">
+                <app-schema-field-node [isCreate]="isCreate" [schemaField]="schemaObject.fields[key]"></app-schema-field-node>
               </div>
-            </div>
-            <div *ngIf="objectKeys(schemaObject?.fields ?? [])?.length == 0" class="page2-objectcontent">
-              <app-add-new-field-icon [schemaFields]="schemaObject"></app-add-new-field-icon>
+              <div *ngIf="isCreate" class="page2-objectcontent">
+                <app-add-new-field-icon [schemaFields]="schemaObject" (onFieldAdded)="handleFieldAdded($event)"></app-add-new-field-icon>
+              </div>
             </div>
           </app-render-parent-field-node>
         </div>
+
       </div>
     <div class="page2-buttons">
       <button mat-button color="white">Cancel</button>

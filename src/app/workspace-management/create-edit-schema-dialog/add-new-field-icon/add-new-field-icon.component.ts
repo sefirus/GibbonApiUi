@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatIconButton} from "@angular/material/button";
@@ -20,9 +20,10 @@ import {SchemaObject} from "../../../core/models/SchemaObject";
 })
 export class AddNewFieldIconComponent {
   @Input() schemaFields: { [key: string]: SchemaField } | SchemaObject = {};
+  @Output() onFieldAdded = new EventEmitter<{ key: string, field: SchemaField }>();
 
   addField(type: string): void {
-    const fieldName = `newField_${Object.keys(this.getFields()).length}`;
+    const fieldName = `New${type}Field`;
     const newField = new SchemaField({
       fieldName: fieldName,
       type: type,
@@ -31,11 +32,11 @@ export class AddNewFieldIconComponent {
     });
 
     if (this.schemaFields instanceof SchemaObject) {
-      this.schemaFields.fields[fieldName] = newField;
       this.schemaFields.numberOfFields++;
     } else {
-      this.schemaFields[fieldName] = newField;
     }
+    this.onFieldAdded.emit({ key: `field_${Date.now()}`, field: newField });
+    console.log(this.schemaFields)
   }
 
   private getFields(): { [key: string]: SchemaField } {

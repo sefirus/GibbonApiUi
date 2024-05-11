@@ -1,5 +1,12 @@
 <div class="u-shape">
-  <div class="horizontal top" [style.background-color]="color"></div>
+  <div class="horizontal top" [style.background-color]="color">
+    <input *ngIf="isCreate"
+           [(ngModel)]="name"
+           (ngModelChange)="nameChange.emit(name)"
+           class="name-input"
+           placeholder="Enter name">
+    <span  class="name-input" *ngIf="!isCreate">{{ name }}</span>
+  </div>
   <div class="content-wrapper">
     <div class="vertical" [style.background-color]="color"></div>
     <div class="content-area">

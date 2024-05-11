@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef} from 
 import {MatButton} from "@angular/material/button";
 
 @Component({
-  selector: 'app-wiev-stored-documents',
+  selector: 'app-view-stored-documents',
   standalone: true,
   imports: [
     MatDialogActions,

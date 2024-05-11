@@ -26,6 +26,7 @@
   border-top-right-radius: 9px;
   border-bottom-right-radius: 9px;
   border-bottom: 0; /* Remove bottom border to allow seamless connection */
+  padding: 3px 5px;
 }
 
 .bottom {
@@ -40,4 +41,18 @@
   display: flex;
   justify-content: left; /* Center content horizontally */
   padding: 10px; /* Padding around the content */
+}
+.name-input {
+  background: transparent;
+  border: none;
+  width: 100%;
+  color: inherit;
+  height: auto;
+  font-size: 16px;
+  text-align: left;
+  font-family: Roboto;
+  font-weight: 500;
+  line-height: 16px;
+  font-stretch: normal;
+  text-decoration: none;
 }
