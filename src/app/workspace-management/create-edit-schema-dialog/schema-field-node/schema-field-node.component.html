@@ -1,16 +1,17 @@
 <ng-container *ngIf="schemaField!.type !== 'Array' && schemaField!.type !== 'Object'">
   <div class="schema-field" [ngStyle]="{'background-color': getColor(schemaField!.type)}">
     <input *ngIf="isCreate" [(ngModel)]="schemaField!.fieldName" (ngModelChange)="updateFieldName($event)" class="name-input">
-    <span *ngIf="!isCreate">{{ schemaField!.fieldName != null ? schemaField!.fieldName : schemaField!.type + " field" }}</span>
-    <div *ngIf="isCreate">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
+    <span class="name-input" *ngIf="!isCreate">{{ schemaField!.fieldName != null ? schemaField!.fieldName : schemaField!.type + " field" }}</span>
+    <div class="icons-container">
+      <mat-icon *ngIf="schemaField?.isPrimaryKey">key</mat-icon>
+      <button class="menu-container" mat-icon-button [matMenuTriggerFor]="menu" [disabled]="!isCreate">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="onDeleteField()">
           Delete
         </button>
-        <button mat-menu-item disabled>
+        <button (click)="markFieldAsPK()" mat-menu-item [disabled]="schemaField?.isPrimaryKey || !isRoot">
           Mark As PK
         </button>
       </mat-menu>
@@ -18,7 +19,6 @@
   </div>
 </ng-container>
 
-<!-- Render Array type with app-parent-schema-field-node -->
 <ng-container *ngIf="schemaField!.type === 'Array'">
   <app-parent-schema-field-node
     [schemaField]="schemaField"
@@ -36,7 +36,6 @@
   </app-parent-schema-field-node>
 </ng-container>
 
-<!-- Render Object type with app-parent-schema-field-node -->
 <ng-container *ngIf="schemaField!.type === 'Object'">
   <app-parent-schema-field-node
     [schemaField]="schemaField"

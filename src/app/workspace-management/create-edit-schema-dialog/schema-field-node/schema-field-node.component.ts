@@ -32,6 +32,8 @@ export class SchemaFieldNodeComponent {
   @Input() isCreate: boolean = false;
   @Output() nameChange = new EventEmitter<string>();
   @Output() deleteField = new EventEmitter<string>();
+  @Input() isRoot: boolean = false;
+  @Output() resetPrimaryKey = new EventEmitter();
 
   getColor(type: string): string {
     switch (type) {
@@ -50,9 +52,11 @@ export class SchemaFieldNodeComponent {
         return 'rgba(205, 91, 136, 1)'; // Default color if type is unrecognized
     }
   }
+
   objectKeys(obj: any): string[] {
     return Object.keys(obj);
   }
+
   updateFieldName(newName: string): void {
     const oldName = this.schemaField!.fieldName;
     if (this.schemaField && oldName !== newName) {
@@ -64,6 +68,7 @@ export class SchemaFieldNodeComponent {
   handleFieldAdded(event: { key: string, field: SchemaField }): void {
     this.schemaField!.fields[event.key] = event.field;
   }
+
   handleArrayElementAdded(event: { key: string, field: SchemaField }): void {
     this.schemaField!.arrayElement = event.field;
   }
@@ -79,10 +84,16 @@ export class SchemaFieldNodeComponent {
       delete this.schemaField!.fields[key];
     }
   }
+
   handleDeleteArrayElement(): void {
     if (this.schemaField?.type != 'Array'){
       return;
     }
     this.schemaField.arrayElement = undefined;
+  }
+
+  markFieldAsPK():void{
+    this.resetPrimaryKey.emit();
+    this.schemaField!.isPrimaryKey = true;
   }
 }

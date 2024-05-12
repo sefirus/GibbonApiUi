@@ -28,12 +28,14 @@
             <div class="page2-objectcontent">
               <div *ngFor="let key of objectKeys(schemaObject.fields)">
                 <app-schema-field-node
+                  [isRoot]="true"
                   [isCreate]="isCreate"
                   [schemaField]="schemaObject.fields[key]"
+                  (resetPrimaryKey)="resetPrimaryKeys()"
                   (deleteField)="handleDeleteField(key)"></app-schema-field-node>
               </div>
               <div *ngIf="isCreate" class="page2-objectcontent">
-                <app-add-new-field-icon [schemaFields]="schemaObject" (onFieldAdded)="handleFieldAdded($event)"></app-add-new-field-icon>
+                <app-add-new-field-icon [isRoot]="true" [schemaFields]="schemaObject" (onFieldAdded)="handleFieldAdded($event)"></app-add-new-field-icon>
               </div>
             </div>
           </app-parent-schema-field-node>

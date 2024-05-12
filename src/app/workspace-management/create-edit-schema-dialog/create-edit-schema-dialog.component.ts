@@ -60,4 +60,10 @@ export class CreateEditSchemaDialogComponent {
       delete this.schemaObject.fields[key];
     }
   }
+
+  resetPrimaryKeys() {
+    Object.keys(this.schemaObject.fields).forEach(key => {
+      this.schemaObject.fields[key].isPrimaryKey = false;
+    });
+  }
 }

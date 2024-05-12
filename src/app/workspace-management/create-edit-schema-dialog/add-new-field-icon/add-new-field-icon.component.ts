@@ -21,13 +21,28 @@ import {SchemaObject} from "../../../core/models/SchemaObject";
 export class AddNewFieldIconComponent {
   @Input() schemaFields: { [key: string]: SchemaField } | SchemaObject = {};
   @Output() onFieldAdded = new EventEmitter<{ key: string, field: SchemaField }>();
+  @Input() isRoot: boolean = false;
 
   addField(type: string): void {
+    let isPK = false;
+    if(this.isRoot && type !='Array' && type != 'Object'){
+      const keys = this.schemaFields instanceof SchemaObject
+        ? this.schemaFields.fields
+        : this.schemaFields;
+      let isAny = false;
+      Object.keys(keys).forEach(key => {
+        if (keys[key].isPrimaryKey){
+          isAny = true;
+        }
+      });
+      isPK = !isAny;
+    }
+
     const fieldName = `New${type}Field`;
     const newField = new SchemaField({
       fieldName: fieldName,
       type: type,
-      isPrimaryKey: false,
+      isPrimaryKey: isPK,
       fields: {}
     });
 
@@ -37,9 +52,5 @@ export class AddNewFieldIconComponent {
     }
     this.onFieldAdded.emit({ key: `field_${Date.now()}`, field: newField });
     console.log(this.schemaFields)
-  }
-
-  private getFields(): { [key: string]: SchemaField } {
-    return this.schemaFields instanceof SchemaObject ? this.schemaFields.fields : this.schemaFields;
   }
 }
