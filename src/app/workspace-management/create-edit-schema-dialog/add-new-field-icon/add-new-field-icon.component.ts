@@ -48,9 +48,7 @@ export class AddNewFieldIconComponent {
 
     if (this.schemaFields instanceof SchemaObject) {
       this.schemaFields.numberOfFields++;
-    } else {
     }
     this.onFieldAdded.emit({ key: `field_${Date.now()}`, field: newField });
-    console.log(this.schemaFields)
   }
 }

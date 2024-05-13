@@ -36,10 +36,16 @@ export class WorkspaceManagementPageComponent  implements OnInit {
   }
 
   createNewObject() {
-    this.dialog.open(CreateEditSchemaDialogComponent, {
+    const dialogRef = this.dialog.open(CreateEditSchemaDialogComponent, {
       data: {
         isCreate: true,
-        schemaObject: new SchemaObject({})
+        schemaObject: new SchemaObject({}),
+        workspaceName: this.workspace!.name,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.ngOnInit()
       }
     });
   }

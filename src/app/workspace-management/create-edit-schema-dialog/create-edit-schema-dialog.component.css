@@ -152,5 +152,19 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  flex-direction: row-reverse;
+  padding: 10px;
+}
+
+.error-container {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text color */
+  border: 1px solid #f5c6cb; /* Light red border */
+  border-radius: 4px;
+}
+
+.error-message {
+  margin-bottom: 5px;
 }

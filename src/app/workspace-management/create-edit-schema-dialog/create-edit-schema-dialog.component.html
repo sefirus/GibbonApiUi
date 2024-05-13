@@ -4,7 +4,7 @@
       <span class="page2-text"><span>Add Schema Object</span></span>
       <mat-form-field appearance="outline">
         <mat-label>Object Name</mat-label>
-        <input matInput placeholder="Enter name">
+        <input matInput placeholder="Enter name" [(ngModel)]="schemaName" name="objectName">
       </mat-form-field>
     </div>
     <div class="page2-section" *ngIf="!isCreate">
@@ -43,8 +43,12 @@
 
       </div>
     <div class="page2-buttons">
-      <button mat-button color="white">Cancel</button>
-      <button mat-raised-button color="black">Save</button>
+      <button mat-raised-button color="black" (click)="saveObject()" [disabled]="!isCreate">Save</button>
+    </div>
+    <div *ngIf="validationErrors.length > 0" class="error-container">
+      <div *ngFor="let error of validationErrors" class="error-message">
+        {{ error }}
+      </div>
     </div>
   </div>
 </div>
