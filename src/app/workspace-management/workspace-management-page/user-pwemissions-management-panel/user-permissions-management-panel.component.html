@@ -4,8 +4,12 @@
       <span>User List</span>
     </span>
   </div>
-  <app-user-permissions-item *ngFor="let permission of permissions" [permission]="permission"></app-user-permissions-item>
-
+  <div *ngFor="let permission of permissions" style="display: flex; flex-direction: row; justify-content: space-between; width: calc(100% - 10px)">
+    <app-user-permissions-item [permission]="permission"></app-user-permissions-item>
+    <button mat-icon-button style="padding: 0" (click)="removePermission(permission.email)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
   <div *ngIf="showAddPermissionPanel" class="add-permission-panel">
     <mat-form-field class="full-width-input">
       <mat-label>Email</mat-label>
@@ -26,7 +30,7 @@
 
   <div class="page1-item2">
     <button class="page1-frame4273189082" (click)="toggleAddPermissionPanel()">
-      <span class="page1-text14">+</span>
+      <mat-icon>add</mat-icon>
     </button>
   </div>
 </div>

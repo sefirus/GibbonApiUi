@@ -1,5 +1,5 @@
-:host { 
-    display: contents; 
+:host {
+    display: contents;
   }
   .page-container {
     width: 100%;
@@ -72,6 +72,8 @@
     overflow: hidden;
     align-items: flex-start;
     flex-direction: column;
+    border: 0;
+    background-color: transparent;
   }
   .page-primary {
     width: 160px;
@@ -794,6 +796,8 @@
     flex-grow: 1;
     align-items: center;
     justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .page-card {
     gap: 16px;
@@ -873,6 +877,7 @@
     align-self: stretch;
     align-items: center;
     flex-shrink: 0;
+    border-width: 0;
   }
   .page-text56 {
     color: rgba(0, 0, 0, 1);
@@ -1274,4 +1279,3 @@
     font-stretch: normal;
     text-decoration: none;
   }
-  

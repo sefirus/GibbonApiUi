@@ -30,13 +30,15 @@ export class SchemaObjectCardComponent {
 
   constructor(private http: HttpClient, public dialog: MatDialog) {}
 
-  deleteItem() {
+  deleteItem(event: MouseEvent) {
+    event.stopPropagation();
     const url = `${environment.apiBaseUrl}/schema/${this.workspaceName}/${this.schemaObject!.name}`;
     this.http.delete(url).subscribe({
     });
   }
 
-  viewContent() {
+  viewContent(event: MouseEvent) {
+    event.stopPropagation();
     const url = `${environment.apiBaseUrl}/${this.workspaceName}/${this.schemaObject!.name}`;
     this.http.get(url).subscribe(data => {
       this.dialog.open(ViewStoredDocumentsComponent, {
@@ -55,4 +57,6 @@ export class SchemaObjectCardComponent {
       }
     });
   }
+
+  protected readonly event = event;
 }

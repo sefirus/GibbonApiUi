@@ -9,7 +9,8 @@ import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
 
 type UserRole = 'General' | 'Admin' | 'Owner';
 
@@ -32,7 +33,9 @@ const roleMapping: { [key in UserRole]: string } = {
     MatInput,
     MatButton,
     NgIf,
-    MatLabel
+    MatLabel,
+    MatIcon,
+    MatIconButton
   ],
   templateUrl: './user-permissions-management-panel.component.html',
   styleUrl: './user-permissions-management-panel.component.css'
@@ -79,6 +82,20 @@ export class UserPermissionsManagementPanelComponent {
         error: (err) => {
           alert('Failed to load permissions: ' + err.message);
         }
+      });
+  }
+
+
+  removePermission(email: string) {
+    const payload = {
+      email: email,
+      role: ""
+    };
+
+    this.http.put(`${environment.apiBaseUrl}/workspaces/${this.workspaceName}/assign-permission`, payload)
+      .subscribe({
+        next: () => this.reloadPermissions(),
+        error: (error) => console.error('Failed to remove permission:', error)
       });
   }
 }

@@ -8,15 +8,15 @@
     </div>
   </div>
   <div class="kebab-menu">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="deleteItem()">
+      <button mat-menu-item (click)="deleteItem($event)">
         <mat-icon>delete</mat-icon>
-        <span>Delete</span>
+        <span>Delete </span>
       </button>
-      <button mat-menu-item (click)="viewContent()">
+      <button mat-menu-item (click)="viewContent($event)">
         <mat-icon>exit_to_app</mat-icon>
         <span>View Content</span>
       </button>
