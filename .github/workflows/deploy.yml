@@ -1,4 +1,4 @@
-name: Angular CI/CD
+name: Deploy Angular App to GitHub Pages
 
 on:
   push:
@@ -7,26 +7,26 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Code
+      uses: actions/checkout@v2
 
-    - name: Use Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '18.x'
+        node-version: '14.x'  # Set to the Node.js version you are using
 
     - name: Install Dependencies
       run: npm install
-      
-    - name: Build
-      run: npm run build -- --prod
 
-    - name: Deploy
-      run: |
-        # Add your deployment commands here
-        # For example, if deploying to GitHub Pages:
-        npm install -g angular-cli-ghpages
-        ng deploy --base-href=/GibbonApiUi/
+    - name: Build Project
+      run: ng build --prod --base-href="/GibbonApiUi/"  # Adjust base-href as needed
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist/GibbonApiUi  # Replace 'GibbonApiUi' with the directory inside dist/ matching your project name as specified in angular.json
