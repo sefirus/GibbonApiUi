@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
-    apiBaseUrl: 'https://localhost:7113/api',
-    authBaseUrl: 'https://localhost:7030'
+    production: true,
+    apiBaseUrl: 'https://gibbon-api-93a291d28d3c.herokuapp.com',
+    authBaseUrl: 'https://gibbon-api-auth-2a2b01eb2f22.herokuapp.com'
   };
